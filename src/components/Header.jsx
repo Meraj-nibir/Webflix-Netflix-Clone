@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from "../assets/logo.png";
-const Header = () => {
+//import logo from "";
+const Header = (props) => {
   return (
-    <div>Header</div>
-  )
+    <Container>
+        <div className="logo">
+            <img src="" alt="Logo" />
+        </div>
+        <button>{props.login ? "Log in":"Sign In"}</button>
+    </Container>
+  );
 }
 
 const Container = styled.div``;
 
-export default Header
+export default Header;
