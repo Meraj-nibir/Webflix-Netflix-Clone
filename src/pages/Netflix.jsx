@@ -1,6 +1,9 @@
-import React from "react";
+import React from 'react'
 
-
-export default function Netflix(){
-    return <div>Netflix</div>
+const Netflix = () => {
+  return (
+    <div>Netflix</div>
+  )
 }
+
+export default Netflix
