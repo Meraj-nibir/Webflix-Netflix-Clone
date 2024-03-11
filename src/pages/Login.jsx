@@ -33,7 +33,7 @@ onAuthStateChanged(firebaseAuth,(currentUser)=>{
         <BackgroundImage/>
         <div className="content">
           <Header/>
-          <div className="form-container flex-column a-center j-center">
+          <div className="form-container flex column a-center j-center">
               <div className="form flex column a-center j-center">
                 <div className="title">
                   <h3>Login</h3>
@@ -83,27 +83,27 @@ const Container = styled.div`
   .content{
     position: absolute;
     top:0;
-    left: 0;
+    left:0;
     background-color: rgba(0,0,0,0.5);
     height: 100vh;
     width:100vw;
-    display: grid;
     grid-template-rows:15vh 85vh; 
     .form-container{
       gap:2rem;
       height:85vh;
       .form{
         padding: 2rem;
-        background-color: #0000000b0;
+        background-color: black;
         width: 25vw;
         gap:2rem;
         color:white;
       }
       .container{
-        gap:2rem;
+        gap:1rem;
         input{
           padding: 0.5 1rem;
           width:15rem;
+          font-size: 1.15rem;
         }
         button{
           padding: 0.5rem 1rem;
@@ -114,6 +114,7 @@ const Container = styled.div`
           border-redius: 0.2rem;
           font-weight: bolder;
           font-size: 1.05rem;
+          width: 15rem;
         }
       }
     }
