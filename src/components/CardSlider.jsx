@@ -19,30 +19,33 @@ export default React.memo(
           setSliderPosition(sliderPosition + 1);
         }
     };
-      return (
-        <Container className="flex column"
-        onMouseEnter={()=>setShowControls(true)}
-        onMouseLeave={()=>setShowControls(false)} >
-          
-          <h1>{title}</h1>
-          <div className="wrapper">
-            <div className={`slider-action left ${!showControls ? "none":""} flex j-center a-center`}>
-              <AiOutlineLeft onClick={()=>handelDirection("Left")}/>
-            </div>
-            <div className='flex slider' ref={listRef}>
-              {
-                  data.map((movie,index)=>{
-                      return <Card movieData={movie} index={index} key={movie.id} />
-                  })
-              }
-            </div>
-            <div className={`slider-action left ${!showControls ? "none":""} flex j-center a-center`}>
-              <AiOutlineRight onClick={()=>handelDirection("Right")}/>
-            </div>
+    return (
+      <Container className="flex column"
+      onMouseEnter={()=>setShowControls(true)}
+      onMouseLeave={()=>setShowControls(false)} >
+        
+        <h1>{title}</h1>
+        <div className="wrapper">
+          <div className={`slider-action left 
+          ${!showControls ? "none":""} 
+          flex j-center a-center`}>
+            <AiOutlineLeft onClick={()=>handelDirection("Left")}/>
           </div>
-          
-        </Container>
-      )
+          <div className='slider flex' ref={listRef}>
+            {
+                data.map((movie,index)=>{
+                    return <Card movieData={movie} index={index} key={movie.id} />
+                })
+            }
+          </div>
+          <div className={`slider-action left 
+          ${!showControls ? "none":""} 
+          flex j-center a-center`}>
+            <AiOutlineRight onClick={()=>handelDirection("Right")}/>
+          </div>
+        </div>
+      </Container>
+    );
   }
 );
 const Container = styled.div`

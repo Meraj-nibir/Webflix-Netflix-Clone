@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import background from "../assets/background.png";
 import MovieLogo from '../assets/video.png'
+
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import styled from 'styled-components';
@@ -16,20 +19,27 @@ const Netflix = () => {
   const navigate = useNavigate();
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   const movies = useSelector((state)=>state.netflix.movies);
+  const genres = useSelector((state) => state.netflix.genres);
   const dispatch = useDispatch();
 
   useEffect(()=>{
     dispatch(getGenres())
   },[]);
 
-  useEffect(()=>{
-    if(genresLoaded) dispatch(fetchMovies({type:"all"}));
-  });
+  useEffect(() => {
+    if (genresLoaded) {
+      dispatch(fetchMovies({ genres, type: "all" }));
+    }
+  }, [genresLoaded]);
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  }); 
 
   window.onscroll = ()=>{
     setIsScrolled(window.scrollY === 0 ? false : true);
     return()=>(window.onscroll = null)
-  } 
+  }
 
 
   return (  

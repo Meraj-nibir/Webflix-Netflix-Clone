@@ -8,12 +8,18 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 export default React.memo(
-  function Card(movieData, isLiked = false ) {
+  function Card({movieData, isLiked = false }) {
   
     const [isHovered, setIsHoevred] = useState(false);
     const navigate = useNavigate();
-    return <Container onMouseEnter = {() => setIsHoevred(true)} onMouseLeave={()=> setIsHoevred(false)}>
-      <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`} alt="movie" />
+    return <Container 
+    onMouseEnter = {() => setIsHoevred(true)} 
+    onMouseLeave={()=> setIsHoevred(false)}
+    >
+      <img 
+      src={`https://image.tmdb.org/t/p/w500${movieData.image}`} 
+      alt="movie" 
+      onClick={()=> navigate("/player")}/>
 
       {
         isHovered && (
