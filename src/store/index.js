@@ -1,4 +1,6 @@
-import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { configureStore, 
+    createAsyncThunk, 
+    createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import {API_KEY, TMBD_BASE_URL} from '../utils/constants';
 
@@ -12,7 +14,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
     const {
       data: { genres },
     } = await axios.get(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=3d39d6bfe362592e6aa293f01fbcf9b9"
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=2a3957d8f3e6567bd50eb6306f4f80f3"
     );
     return genres;
 });
