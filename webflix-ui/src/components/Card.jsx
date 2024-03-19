@@ -11,7 +11,22 @@ export default React.memo(
   function Card({movieData, isLiked = false }) {
   
     const [isHovered, setIsHoevred] = useState(false);
+    const [email, setEmail] = useState(undefined);
     const navigate = useNavigate();
+
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) setEmail(currentUser.email);
+      else navigate("/login");
+    });
+
+    const addToList = async () => {
+      try{
+        await axios.post("http://localhost:5000/api/user/add", {email, data:movieData})
+      }catch(err){
+        console.log(err);
+      }
+    }
+
     return <Container 
     onMouseEnter = {() => setIsHoevred(true)} 
     onMouseLeave={()=> setIsHoevred(false)}
