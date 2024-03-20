@@ -10,11 +10,11 @@ export default React.memo(
     const listRef = useRef();
     const handelDirection = (direction)=>{
       let distance = listRef.current.getBoundingClientRect().x - 70;
-        if (direction === "left" && sliderPosition > 0) {
+        if (direction === "Left" && sliderPosition > 0) {
           listRef.current.style.transform = `translateX(${230 + distance}px)`;
           setSliderPosition(sliderPosition - 1);
         }
-        if (direction === "right" && sliderPosition < 4) {
+        if (direction === "Right" && sliderPosition < 4) {
           listRef.current.style.transform = `translateX(${-230 + distance}px)`;
           setSliderPosition(sliderPosition + 1);
         }
@@ -38,7 +38,7 @@ export default React.memo(
                 })
             }
           </div>
-          <div className={`slider-action left 
+          <div className={`slider-action right 
           ${!showControls ? "none":""} 
           flex j-center a-center`}>
             <AiOutlineRight onClick={()=>handelDirection("Right")}/>
@@ -49,13 +49,13 @@ export default React.memo(
   }
 );
 const Container = styled.div`
-  gtap: 1rem;
+  gap: 1rem;
   position: relative;
   padding: 2rem 0;
   h1{
     margin-left: 50px;
   }
-  ,wrapper{
+  .wrapper{
     .slider{
       width: max-content;
       gap: 1rem;
