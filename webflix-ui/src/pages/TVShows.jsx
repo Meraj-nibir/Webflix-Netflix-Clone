@@ -38,7 +38,7 @@ function TVShows() {
   });
 
   window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    setIsScrolled(document.documentElement.scrollTop === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 

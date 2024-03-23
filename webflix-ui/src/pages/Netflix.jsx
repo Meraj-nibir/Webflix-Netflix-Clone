@@ -37,7 +37,7 @@ const Netflix = () => {
   }); 
 
   window.onscroll = ()=>{
-    setIsScrolled(window.scrollY === 0 ? false : true);
+    setIsScrolled(document.documentElement.scrollTop === 0 ? false : true);
     return()=>(window.onscroll = null)
   }
 
